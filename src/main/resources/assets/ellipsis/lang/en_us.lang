@@ -1,0 +1,9 @@
+//Creative tab
+itemGroup.ellipsis=...
+
+//Blocks
+tile.ellipsis.directionalMuffler.name=Directional Muffler
+tile.ellipsis.omnidirectionalMuffler.name=Omnidirectional Muffler
+
+//Items
+item.ellipsis.earmuffs.name=Earmuffs
