@@ -9,7 +9,7 @@
   "updateUrl": "",
   "authorList": ["Leviathan143"],
   "credits": "",
-  "logoFile": "",
+  "logoFile": "/logoFile.png",
   "screenshots": [],
   "dependencies": []
 }

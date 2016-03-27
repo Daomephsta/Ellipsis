@@ -2,8 +2,8 @@
 itemGroup.ellipsis=...
 
 //Blocks
-tile.ellipsis.directionalMuffler.name=Directional Muffler
-tile.ellipsis.omnidirectionalMuffler.name=Omnidirectional Muffler
+tile.ellipsis.directionalMuffler.name=Directional Sound Canceller
+tile.ellipsis.omnidirectionalMuffler.name=Omnidirectional Sound Canceller
 
 //Items
 item.ellipsis.earmuffs.name=Earmuffs

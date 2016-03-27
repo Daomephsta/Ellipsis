@@ -12,7 +12,7 @@ import com.leviathan143.ellipsis.Ellipsis.Constants;
 import com.leviathan143.ellipsis.common.CommonProxy;
 import com.leviathan143.ellipsis.common.blocks.EllipsisBlocks;
 
-@Mod(modid = Constants.MODID, name = Constants.MODNAME, version = Constants.VERSION, acceptedMinecraftVersions = Constants.MCVERSION)
+@Mod(modid = Constants.MODID, name = Constants.MODNAME, version = Constants.VERSION, acceptedMinecraftVersions = Constants.MCVERSION, canBeDeactivated = false)
 public class Ellipsis 
 {
 

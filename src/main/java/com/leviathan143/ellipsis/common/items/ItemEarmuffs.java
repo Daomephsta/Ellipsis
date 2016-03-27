@@ -9,21 +9,21 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.leviathan143.ellipsis.Ellipsis.Constants;
-import com.leviathan143.ellipsis.client.model.armour.ModelEarmuffs;
+import com.leviathan143.ellipsis.client.model.Models;
 import com.leviathan143.ellipsis.common.blocks.IMuffler;
 
 public class ItemEarmuffs extends ItemArmor implements IMuffler
 {
+	private static final String EARMUFFS_TEXTURE = Constants.MODID + ":textures/armour/earmuffs.png";
+	
 	public ItemEarmuffs() 
 	{
 		super(ArmorMaterial.LEATHER, 0, 0);
 	}
-	
-	private ModelEarmuffs modelEarmuffs = new ModelEarmuffs();
-
-	private static final String EARMUFFS_TEXTURE = Constants.MODID + ":textures/armour/earmuffs.png";
 
 	@Override
 	public boolean shouldMuffleSound(World world, BlockPos mufflerPos,
@@ -39,12 +39,13 @@ public class ItemEarmuffs extends ItemArmor implements IMuffler
 		return false;
 	}
 
+	@SideOnly(Side.CLIENT)
 	@Override
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot, ModelBiped _default) 
 	{
 		if(armorSlot == 4)
 		{
-			return modelEarmuffs;
+			return Models.MODEL_EARMUFFS;	
 		}
 		return super.getArmorModel(entityLiving, itemStack, armorSlot, _default);
 	}
