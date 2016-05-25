@@ -8,9 +8,11 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
+import net.minecraftforge.event.entity.PlaySoundAtEntityEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.items.wrapper.PlayerArmorInvWrapper;
 
+import com.leviathan143.ellipsis.common.Shennanigans;
 import com.leviathan143.ellipsis.common.blocks.IMuffler;
 
 public class SoundEventHandler 
@@ -27,6 +29,12 @@ public class SoundEventHandler
 			event.result = null;
 			return;
 		}
+	}
+	
+	@SubscribeEvent
+	public void onEntitySoundPlayed(PlaySoundAtEntityEvent event)
+	{ 
+		
 	}
 
 	public boolean doesHeadgearMuffle(World world, EntityPlayer player, PlaySoundEvent soundEvent)

@@ -4,6 +4,7 @@ import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityArmorStand;
 
 
 /**
@@ -39,8 +40,8 @@ public class ModelEarmuffs extends ModelBiped {
 	public void render(Entity entity, float x, float y, float z, float yaw, float partialTicks, float scale) 
 	{
 		GlStateManager.pushMatrix();
-		super.setRotationAngles(x, y, z, yaw, partialTicks, scale, entity);
 		this.bipedHead = headband;
+		super.setRotationAngles(x, y, z, yaw, partialTicks, scale, entity);
 		if(entity.isSneaking()) GlStateManager.translate(0.0F, 0.275F, 0.0F);
 		headband.render(scale);
 		GlStateManager.popMatrix();

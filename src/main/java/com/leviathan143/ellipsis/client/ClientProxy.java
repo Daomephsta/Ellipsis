@@ -10,6 +10,8 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 import com.leviathan143.ellipsis.common.CommonProxy;
+import com.leviathan143.ellipsis.common.EllipsisConfig;
+import com.leviathan143.ellipsis.common.Shennanigans;
 import com.leviathan143.ellipsis.common.blocks.EllipsisBlocks;
 import com.leviathan143.ellipsis.common.items.EllipsisItems;
 
@@ -21,6 +23,8 @@ public class ClientProxy extends CommonProxy
 	public void preInit(FMLPreInitializationEvent event) 
 	{	
 		super.preInit(event);
+		EllipsisConfig.clientSetup(event.getSuggestedConfigurationFile());
+		Shennanigans.checkDate();
 	}
 
 	@Override

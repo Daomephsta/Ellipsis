@@ -21,5 +21,6 @@ public class EllipsisCrafting
 			, "P P", " W ", "P P", 'P', "plankWood", 'W', new ItemStack(Blocks.wool, 1, OreDictionary.WILDCARD_VALUE)));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(EllipsisBlocks.directionalMuffler)
 			, "PPP", "PW ", "PPP", 'P', "plankWood", 'W', new ItemStack(Blocks.wool, 1, OreDictionary.WILDCARD_VALUE)));
+		GameRegistry.addRecipe(new RecipeEarmuffDying());
 	}
 }
