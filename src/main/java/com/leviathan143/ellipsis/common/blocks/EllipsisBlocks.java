@@ -14,11 +14,13 @@ public class EllipsisBlocks
 	public static List<Block> blockList = new ArrayList<Block>();
 	public static BlockOmnidirectionalMuffler omnidirectionalMuffler = new BlockOmnidirectionalMuffler();
 	public static BlockDirectionalMuffler directionalMuffler = new BlockDirectionalMuffler();
+	public static BlockRegionalMuffler regionalMuffler = new BlockRegionalMuffler();
 	
 	public static void init()
 	{
 		registerBlock(omnidirectionalMuffler, "omnidirectionalMuffler");
 		registerBlock(directionalMuffler, "directionalMuffler");
+		registerBlock(regionalMuffler, "regionalMuffler");
 	}
 	
 	private static void registerBlock(Block block, String name)
@@ -29,3 +31,4 @@ public class EllipsisBlocks
 		blockList.add(block);
 	}
 }
+

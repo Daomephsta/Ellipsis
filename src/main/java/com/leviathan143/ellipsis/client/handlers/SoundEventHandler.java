@@ -1,4 +1,6 @@
-package com.leviathan143.ellipsis.client;
+package com.leviathan143.ellipsis.client.handlers;
+
+import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -6,14 +8,16 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
 import net.minecraftforge.event.entity.PlaySoundAtEntityEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.items.wrapper.PlayerArmorInvWrapper;
 
-import com.leviathan143.ellipsis.common.Shennanigans;
+import com.leviathan143.ellipsis.common.blocks.BlockRegionalMuffler;
 import com.leviathan143.ellipsis.common.blocks.IMuffler;
+import com.leviathan143.ellipsis.common.data.RegionalMufflerMap;
 
 public class SoundEventHandler 
 {	
@@ -30,17 +34,17 @@ public class SoundEventHandler
 			return;
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void onEntitySoundPlayed(PlaySoundAtEntityEvent event)
 	{ 
-		
+
 	}
 
 	public boolean doesHeadgearMuffle(World world, EntityPlayer player, PlaySoundEvent soundEvent)
 	{
 		ItemStack headArmour = new PlayerArmorInvWrapper(player.inventory).getStackInSlot(3);
-		
+
 		if(headArmour != null && headArmour.getItem() instanceof IMuffler)
 		{
 			if(((IMuffler) headArmour.getItem()).shouldMuffleSound(world, player.getPosition(), soundEvent.sound, soundEvent.category))
@@ -65,6 +69,28 @@ public class SoundEventHandler
 				{
 					soundEvent.result = null;
 					return true;
+				}
+			}
+		}
+		return isRegionMuffled(world, soundPos, soundEvent);
+	}
+
+	public boolean isRegionMuffled(World world, BlockPos soundPos, PlaySoundEvent soundEvent)
+	{
+		RegionalMufflerMap mufflerMap = RegionalMufflerMap.get(world);
+		List<BlockPos> mufflers = mufflerMap.findMufflers(world.getChunkFromBlockCoords(soundPos).getChunkCoordIntPair());
+		if(mufflers != null)
+		{
+			for(BlockPos mufflerPos : mufflers)
+			{
+				Block block = world.getBlockState(mufflerPos).getBlock();
+				if(block instanceof BlockRegionalMuffler)
+				{
+					if(((BlockRegionalMuffler) block).shouldMuffleSound(world, mufflerPos, soundEvent.sound, soundEvent.category))
+					{
+						soundEvent.result = null;
+						return true;
+					}
 				}
 			}
 		}

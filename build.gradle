@@ -25,7 +25,7 @@ group= "com.leviathan143.ellipsis" // http://maven.apache.org/guides/mini/guide-
 archivesBaseName = "Ellipsis"
 
 minecraft {
-    version = "1.8.9-11.15.1.1808"
+    version = "1.8.9-11.15.1.1902-1.8.9"
 	if(file('../run1.8.9').exists())
 		{runDir = "../run1.8.9"}
     else 

@@ -16,11 +16,12 @@ public class EllipsisCrafting
 	{
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(EllipsisItems.earmuffs)
 			, " S ", "S S", "W W", 'S', "stickWood", 'W', new ItemStack(Blocks.wool, 1, OreDictionary.WILDCARD_VALUE)));
-		
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(EllipsisBlocks.omnidirectionalMuffler)
 			, "P P", " W ", "P P", 'P', "plankWood", 'W', new ItemStack(Blocks.wool, 1, OreDictionary.WILDCARD_VALUE)));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(EllipsisBlocks.directionalMuffler)
 			, "PPP", "PW ", "PPP", 'P', "plankWood", 'W', new ItemStack(Blocks.wool, 1, OreDictionary.WILDCARD_VALUE)));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(EllipsisBlocks.regionalMuffler)
+		, "I I", " W ", "I I", 'I', "ingotIron", 'W', new ItemStack(Blocks.wool, 1, OreDictionary.WILDCARD_VALUE)));
 		GameRegistry.addRecipe(new RecipeEarmuffDying());
 	}
 }

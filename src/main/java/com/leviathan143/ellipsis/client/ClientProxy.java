@@ -9,6 +9,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
+import com.leviathan143.ellipsis.client.handlers.SoundEventHandler;
 import com.leviathan143.ellipsis.common.CommonProxy;
 import com.leviathan143.ellipsis.common.EllipsisConfig;
 import com.leviathan143.ellipsis.common.Shennanigans;

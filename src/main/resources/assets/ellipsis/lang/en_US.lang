@@ -4,6 +4,8 @@ itemGroup.ellipsis=...
 //Blocks
 tile.ellipsis.directionalMuffler.name=Directional Sound Canceller
 tile.ellipsis.omnidirectionalMuffler.name=Omnidirectional Sound Canceller
+tile.ellipsis.regionalMuffler.name=Regional Sound Canceller
 
 //Items
 item.ellipsis.earmuffs.name=Earmuffs
+item.ellipsis.entitySilencer.name=Entity Silencer
