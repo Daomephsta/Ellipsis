@@ -1,6 +1,7 @@
 package com.leviathan143.ellipsis.common.recipes;
 
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
@@ -21,7 +22,7 @@ public class EllipsisCrafting
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(EllipsisBlocks.directionalMuffler)
 			, "PPP", "PW ", "PPP", 'P', "plankWood", 'W', new ItemStack(Blocks.wool, 1, OreDictionary.WILDCARD_VALUE)));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(EllipsisBlocks.regionalMuffler)
-		, "I I", " W ", "I I", 'I', "ingotIron", 'W', new ItemStack(Blocks.wool, 1, OreDictionary.WILDCARD_VALUE)));
+		, "PRP", " W ", "PRP", 'P', "plankWood", 'R', Items.redstone, 'W', new ItemStack(Blocks.wool, 1, OreDictionary.WILDCARD_VALUE)));
 		GameRegistry.addRecipe(new RecipeEarmuffDying());
 	}
 }
