@@ -8,8 +8,8 @@ import java.util.Map.Entry;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.util.BlockPos;
-import net.minecraft.world.ChunkCoordIntPair;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldSavedData;
 import net.minecraft.world.storage.MapStorage;
@@ -25,7 +25,7 @@ public class RegionalMufflerMap extends WorldSavedData
 	private static final String MUFFLER_POS_TAG = "Pos";
 	private static final String MUFFLER_LIST_TAG = "Mufflers";
 
-	private HashMap<ChunkCoordIntPair, List<BlockPos>> regionalMufflerMap = new HashMap<ChunkCoordIntPair, List<BlockPos>>();
+	private HashMap<ChunkPos, List<BlockPos>> regionalMufflerMap = new HashMap<ChunkPos, List<BlockPos>>();
 
 	public RegionalMufflerMap() 
 	{
@@ -40,7 +40,7 @@ public class RegionalMufflerMap extends WorldSavedData
 	public static RegionalMufflerMap get(World world)
 	{
 		MapStorage worldDataStorage = world.getPerWorldStorage();
-		RegionalMufflerMap regionalMufflerMap = (RegionalMufflerMap) worldDataStorage.loadData(RegionalMufflerMap.class, DATANAME);
+		RegionalMufflerMap regionalMufflerMap = (RegionalMufflerMap) worldDataStorage.getOrLoadData(RegionalMufflerMap.class, DATANAME);
 		if(regionalMufflerMap == null)
 		{
 			regionalMufflerMap = new RegionalMufflerMap();
@@ -49,20 +49,20 @@ public class RegionalMufflerMap extends WorldSavedData
 		return regionalMufflerMap;
 	}
 
-	public List<BlockPos> getMufflers(ChunkCoordIntPair chunkCoords)
+	public List<BlockPos> getMufflers(ChunkPos chunkCoords)
 	{
 		return regionalMufflerMap.get(chunkCoords);
 	}
 
-	public List<BlockPos> findMufflers(ChunkCoordIntPair centralChunkCoords)
+	public List<BlockPos> findMufflers(ChunkPos centralChunkCoords)
 	{
-		ChunkCoordIntPair chunkCoords = centralChunkCoords;
+		ChunkPos chunkCoords = centralChunkCoords;
 		List<BlockPos> mufflers = new ArrayList<BlockPos>();
 		for(int x = -1; x < 2; x++)
 		{
 			for(int z = -1; z < 2; z++)
 			{
-				chunkCoords = new ChunkCoordIntPair(centralChunkCoords.chunkXPos + x, centralChunkCoords.chunkZPos + z);
+				chunkCoords = new ChunkPos(centralChunkCoords.chunkXPos + x, centralChunkCoords.chunkZPos + z);
 				if (regionalMufflerMap.containsKey(chunkCoords)) mufflers.addAll(regionalMufflerMap.get(chunkCoords));
 			}
 		}
@@ -71,7 +71,7 @@ public class RegionalMufflerMap extends WorldSavedData
 
 	public void addMuffler(World world, BlockPos mufflerPos)
 	{
-		ChunkCoordIntPair chunkCoords = world.getChunkFromBlockCoords(mufflerPos).getChunkCoordIntPair();
+		ChunkPos chunkCoords = world.getChunkFromBlockCoords(mufflerPos).getChunkCoordIntPair();
 		List<BlockPos> mufflers;
 		if(regionalMufflerMap.containsKey(chunkCoords)) mufflers = regionalMufflerMap.get(chunkCoords);
 		else mufflers = new ArrayList<BlockPos>();
@@ -85,7 +85,7 @@ public class RegionalMufflerMap extends WorldSavedData
 
 	public void removeMuffler(World world, BlockPos mufflerPos)
 	{
-		ChunkCoordIntPair chunkCoords = world.getChunkFromBlockCoords(mufflerPos).getChunkCoordIntPair();
+		ChunkPos chunkCoords = world.getChunkFromBlockCoords(mufflerPos).getChunkCoordIntPair();
 		List<BlockPos> mufflers;
 		if(regionalMufflerMap.containsKey(chunkCoords))
 		{
@@ -128,20 +128,20 @@ public class RegionalMufflerMap extends WorldSavedData
 				int[] blockCoords = mufflerPosTag.getIntArray(MUFFLER_POS_TAG);
 				mufflerList.add(new BlockPos(blockCoords[0], blockCoords[1], blockCoords[2]));
 			}
-			regionalMufflerMap.put(new ChunkCoordIntPair(chunkCoords[0], chunkCoords[1]), mufflerList);
+			regionalMufflerMap.put(new ChunkPos(chunkCoords[0], chunkCoords[1]), mufflerList);
 		}
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound nbt) 
+	public NBTTagCompound writeToNBT(NBTTagCompound nbt) 
 	{
 		NBTTagList regionalMufflerMapTag = new NBTTagList();
-		for(Iterator<Entry<ChunkCoordIntPair, List<BlockPos>>> iter = this.regionalMufflerMap.entrySet().iterator(); iter.hasNext();)
+		for(Iterator<Entry<ChunkPos, List<BlockPos>>> iter = this.regionalMufflerMap.entrySet().iterator(); iter.hasNext();)
 		{
 			NBTTagCompound entryTag = new NBTTagCompound();
 			NBTTagList mufflerListTag = new NBTTagList();
 			NBTTagCompound mufflerPosTag;
-			Entry<ChunkCoordIntPair, List<BlockPos>> mufflersInChunk = iter.next();
+			Entry<ChunkPos, List<BlockPos>> mufflersInChunk = iter.next();
 			//Add chunk coords to entry tag
 			entryTag.setIntArray(CHUNK_COORD_TAG, new int[] {mufflersInChunk.getKey().chunkXPos, mufflersInChunk.getKey().chunkZPos});
 			//Create list of coords of mufflers in the chunk 
@@ -158,5 +158,6 @@ public class RegionalMufflerMap extends WorldSavedData
 		}
 		//Write map to NBT
 		nbt.setTag(MUFFLER_MAP_TAG, regionalMufflerMapTag);
+		return nbt;
 	}
 }

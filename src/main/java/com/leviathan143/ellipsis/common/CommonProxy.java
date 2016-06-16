@@ -14,7 +14,7 @@ public class CommonProxy
 	{	
 		EllipsisBlocks.init();
 		EllipsisItems.init();
-		registerModels();
+		registerRenders();
 	}
 
 	public void init(FMLInitializationEvent event) 
@@ -26,7 +26,7 @@ public class CommonProxy
 	{
 	}
 
-	public void registerModels() 
+	public void registerRenders() 
 	{
 		
 	}

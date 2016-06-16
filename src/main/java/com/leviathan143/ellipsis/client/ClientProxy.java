@@ -1,7 +1,8 @@
 package com.leviathan143.ellipsis.client;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
@@ -32,6 +33,7 @@ public class ClientProxy extends CommonProxy
 	public void init(FMLInitializationEvent event) 
 	{
 		super.init(event);
+		Minecraft.getMinecraft().getItemColors().registerItemColorHandler(EllipsisItems.earmuffs, EllipsisItems.earmuffs);
 	}
 
 	@Override
@@ -42,7 +44,7 @@ public class ClientProxy extends CommonProxy
 	}
 	
 	@Override
-	public void registerModels()
+	public void registerRenders()
 	{
 		for(Block block : EllipsisBlocks.blockList)
 		{

@@ -3,6 +3,7 @@ package com.leviathan143.ellipsis.common.items;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -24,8 +25,9 @@ public class EllipsisItems
 	private static void registerItem(Item item, String name)
 	{
 		item.setUnlocalizedName(Constants.MODID + "." +  name);
+		item.setRegistryName(name);
 		item.setCreativeTab(Ellipsis.ellipsisTab);
-		GameRegistry.registerItem(item, name);
+		GameRegistry.register(item);
 		itemList.add(item);
 	}
 }

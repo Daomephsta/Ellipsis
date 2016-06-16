@@ -1,23 +1,25 @@
 package com.leviathan143.ellipsis.common.items;
 
 import java.awt.Color;
-import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.block.BlockCauldron;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.audio.ISound;
-import net.minecraft.client.audio.SoundCategory;
 import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -27,16 +29,15 @@ import com.leviathan143.ellipsis.client.model.Models;
 import com.leviathan143.ellipsis.common.blocks.IMuffler;
 import com.leviathan143.ellipsis.common.helpers.StackNBTHelper;
 
-public class ItemEarmuffs extends ItemArmor implements IMuffler
+public class ItemEarmuffs extends ItemArmor implements IMuffler, IItemColor
 {
 	private static final String EARMUFFS_BASE_TEXTURE = Constants.MODID + ":textures/armour/earmuffs0.png";
 	private static final String EARMUFFS_OVERLAY_TEXTURE = Constants.MODID + ":textures/armour/earmuffs1.png";
 	private static final String TAG_COLOUR = "Colour";
-	private ArrayList<ResourceLocation> textureList = new ArrayList<ResourceLocation>();;
 
 	public ItemEarmuffs() 
 	{
-		super(ArmorMaterial.LEATHER, 0, 0);
+		super(ArmorMaterial.LEATHER, 0, EntityEquipmentSlot.HEAD);
 	}
 
 	@Override
@@ -47,21 +48,20 @@ public class ItemEarmuffs extends ItemArmor implements IMuffler
 	}
 
 	@Override
-	public boolean isValidArmor(ItemStack stack, int armorType, Entity entity) 
+	public boolean isValidArmor(ItemStack stack, EntityEquipmentSlot armorType, Entity entity) 
 	{
-		if(armorType == 0) return true;
-		return false;
+		return armorType == EntityEquipmentSlot.HEAD;
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot, ModelBiped _default) 
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, net.minecraft.client.model.ModelBiped _default) 
 	{
-		return armorSlot == 4 ? Models.MODEL_EARMUFFS : super.getArmorModel(entityLiving, itemStack, armorSlot, _default);
+		return armorSlot == EntityEquipmentSlot.HEAD ? Models.MODEL_EARMUFFS : super.getArmorModel(entityLiving, itemStack, armorSlot, _default);
 	}
 
 	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) 
+	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot armorSlot, String type) 
 	{
 		return type != null && type.equals("overlay") ? EARMUFFS_OVERLAY_TEXTURE : EARMUFFS_BASE_TEXTURE;
 	}
@@ -73,17 +73,22 @@ public class ItemEarmuffs extends ItemArmor implements IMuffler
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing side
-			, float hitX, float hitY, float hitZ) 
+	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) 
 	{
 		IBlockState blockstate = worldIn.getBlockState(pos);
-		if(blockstate.getBlock() == Blocks.cauldron && blockstate.getValue(BlockCauldron.LEVEL) > 0)
+		if(blockstate.getBlock() == Blocks.CAULDRON && blockstate.getValue(BlockCauldron.LEVEL) > 0)
 		{
 			((BlockCauldron) blockstate.getBlock()).setWaterLevel(worldIn, pos, blockstate, blockstate.getValue(BlockCauldron.LEVEL) - 1);
 			this.setColourRGB(stack, 0, 0, 0);
-			return true;
+			return EnumActionResult.SUCCESS;
 		}
-		return false;
+		return EnumActionResult.PASS;
+	}
+	
+	@Override
+	public int getColorFromItemstack(ItemStack stack, int tintIndex) 
+	{
+		return StackNBTHelper.getTag(stack).getInteger(TAG_COLOUR);
 	}
 	
 	@Override

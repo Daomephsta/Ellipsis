@@ -1,18 +1,22 @@
 package com.leviathan143.ellipsis.common.blocks;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.block.Block;
+import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.audio.ISound;
-import net.minecraft.client.audio.SoundCategory;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import com.leviathan143.ellipsis.common.data.RegionalMufflerMap;
@@ -23,7 +27,7 @@ public class BlockRegionalMuffler extends Block
 	
 	public BlockRegionalMuffler() 
 	{
-		super(Material.iron);
+		super(Material.WOOD, MapColor.GRAY);
 		setDefaultState(this.blockState.getBaseState().withProperty(REGION_RADIUS, 1));
 	}
 	
@@ -41,10 +45,9 @@ public class BlockRegionalMuffler extends Block
 	}
 	
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side,
-			float hitX, float hitY, float hitZ) 
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) 
 	{
-		if(playerIn.getHeldItem() != null) return false;
+		if(heldItem != null) return false;
 		int radius = state.getValue(REGION_RADIUS);
 		if(playerIn.isSneaking()) radius = radius > 1 ? radius - 1 : 8;
 		else radius = radius < 8 ? radius + 1 : 1;
@@ -53,9 +56,9 @@ public class BlockRegionalMuffler extends Block
 	}
 	
 	@Override
-	protected BlockState createBlockState() 
+	protected BlockStateContainer createBlockState() 
 	{
-		return new BlockState(this, new IProperty[]{REGION_RADIUS});
+		return new BlockStateContainer(this, new IProperty[]{REGION_RADIUS});
 	}
 	
 	@Override

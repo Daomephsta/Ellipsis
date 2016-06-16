@@ -39,6 +39,10 @@ public class ModelEarmuffs extends ModelBiped {
 	@Override
 	public void render(Entity entity, float x, float y, float z, float yaw, float partialTicks, float scale) 
 	{
+		if (entity instanceof EntityArmorStand)
+		{
+			 yaw = ((EntityArmorStand) entity).getHeadRotation().getZ();
+		}
 		GlStateManager.pushMatrix();
 		this.bipedHead = headband;
 		super.setRotationAngles(x, y, z, yaw, partialTicks, scale, entity);

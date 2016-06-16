@@ -20,12 +20,12 @@ plugins {
     id "net.minecraftforge.gradle.forge" version "2.0.2"
 }
 */
-version = "0.1"
+version = "1.9.4-0.3"
 group= "com.leviathan143.ellipsis" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "..."
 
 minecraft {
-    version = "1.9.4-12.17.0.1959"
+    version = "1.9.4-12.17.0.1963"
     runDir = "run"
     
     // the mappings can be changed at any time, and must be in the following format.

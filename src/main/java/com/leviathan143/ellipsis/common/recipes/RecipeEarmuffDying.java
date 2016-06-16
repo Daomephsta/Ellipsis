@@ -68,7 +68,7 @@ public class RecipeEarmuffDying implements IRecipe
 	{
 		return OreDictionary.containsMatch(false, OreDictionary.getOres("dyeRed"), stack) 
 				|| OreDictionary.containsMatch(false, OreDictionary.getOres("dyeBlue"), stack) 
-				|| OreDictionary.containsMatch(false, OreDictionary.getOres("dyeGreen"), stack) || stack.getItem() == Items.water_bucket;
+				|| OreDictionary.containsMatch(false, OreDictionary.getOres("dyeGreen"), stack) || stack.getItem() == Items.WATER_BUCKET;
 	}
 
 	@Override

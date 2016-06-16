@@ -4,11 +4,11 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.ISound;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.world.ChunkCoordIntPair;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
 import net.minecraftforge.event.entity.PlaySoundAtEntityEvent;
@@ -28,9 +28,9 @@ public class SoundEventHandler
 		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
 
 		if(world == null || player == null) return;
-		if(doesHeadgearMuffle(world, player, event) || doBlocksMuffle(world, event))
+		if(doesHeadgearMuffle(world, player, event.getSound()) || doBlocksMuffle(world, event))
 		{
-			event.result = null;
+			event.setResultSound(null);
 			return;
 		}
 	}
@@ -41,13 +41,13 @@ public class SoundEventHandler
 
 	}
 
-	public boolean doesHeadgearMuffle(World world, EntityPlayer player, PlaySoundEvent soundEvent)
+	public boolean doesHeadgearMuffle(World world, EntityPlayer player, ISound iSound)
 	{
 		ItemStack headArmour = new PlayerArmorInvWrapper(player.inventory).getStackInSlot(3);
 
 		if(headArmour != null && headArmour.getItem() instanceof IMuffler)
 		{
-			if(((IMuffler) headArmour.getItem()).shouldMuffleSound(world, player.getPosition(), soundEvent.sound, soundEvent.category))
+			if(((IMuffler) headArmour.getItem()).shouldMuffleSound(world, player.getPosition(), iSound, iSound.getCategory()))
 			{
 				return true;
 			}
@@ -58,16 +58,15 @@ public class SoundEventHandler
 	public boolean doBlocksMuffle(World world, PlaySoundEvent soundEvent)
 	{
 		//The position of the block that emitted the sound
-		BlockPos soundPos = new BlockPos(soundEvent.sound.getXPosF(), soundEvent.sound.getYPosF(), soundEvent.sound.getZPosF());
+		BlockPos soundPos = new BlockPos(soundEvent.getSound().getXPosF(), soundEvent.getSound().getYPosF(), soundEvent.getSound().getZPosF());
 		for(EnumFacing direction : EnumFacing.VALUES)
 		{
 			BlockPos pos = soundPos.offset(direction);
 			Block block = world.getBlockState(pos).getBlock();
 			if(block instanceof IMuffler )
 			{
-				if(((IMuffler) block).shouldMuffleSound(world, pos, soundEvent.sound, soundEvent.category))
+				if(((IMuffler) block).shouldMuffleSound(world, pos, soundEvent.getSound(), soundEvent.getSound().getCategory()))
 				{
-					soundEvent.result = null;
 					return true;
 				}
 			}
@@ -86,9 +85,8 @@ public class SoundEventHandler
 				Block block = world.getBlockState(mufflerPos).getBlock();
 				if(block instanceof BlockRegionalMuffler)
 				{
-					if(((BlockRegionalMuffler) block).shouldMuffleSound(world, mufflerPos, soundEvent.sound, soundEvent.category))
+					if(((BlockRegionalMuffler) block).shouldMuffleSound(world, mufflerPos, soundEvent.getSound(), soundEvent.getSound().getCategory()))
 					{
-						soundEvent.result = null;
 						return true;
 					}
 				}

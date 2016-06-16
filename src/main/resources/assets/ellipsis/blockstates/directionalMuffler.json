@@ -1,7 +1,8 @@
+
 {
 	"variants": 
  	{
-		"inventory": { "model": "ellipsis:directionalMuffler"}, 
+		"inventory": { "model": "ellipsis:directionalMuffler"},
     	"facing=north": { "model": "ellipsis:directionalMuffler"},
 		"facing=south": { "model": "ellipsis:directionalMuffler", "y": 180},
 		"facing=east": { "model": "ellipsis:directionalMuffler", "y": 90},

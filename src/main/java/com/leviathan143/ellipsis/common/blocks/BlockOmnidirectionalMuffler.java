@@ -1,10 +1,11 @@
 package com.leviathan143.ellipsis.common.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.audio.ISound;
-import net.minecraft.client.audio.SoundCategory;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 
@@ -12,7 +13,7 @@ public class BlockOmnidirectionalMuffler extends Block implements IMuffler
 {
 	public BlockOmnidirectionalMuffler() 
 	{
-		super(Material.iron);
+		super(Material.WOOD, MapColor.GRAY);
 		setDefaultState(this.blockState.getBaseState());
 	}
 
