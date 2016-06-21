@@ -29,7 +29,7 @@ import com.leviathan143.ellipsis.client.model.Models;
 import com.leviathan143.ellipsis.common.blocks.IMuffler;
 import com.leviathan143.ellipsis.common.helpers.StackNBTHelper;
 
-public class ItemEarmuffs extends ItemArmor implements IMuffler, IItemColor
+public class ItemEarmuffs extends ItemArmor implements IMuffler
 {
 	private static final String EARMUFFS_BASE_TEXTURE = Constants.MODID + ":textures/armour/earmuffs0.png";
 	private static final String EARMUFFS_OVERLAY_TEXTURE = Constants.MODID + ":textures/armour/earmuffs1.png";
@@ -83,12 +83,6 @@ public class ItemEarmuffs extends ItemArmor implements IMuffler, IItemColor
 			return EnumActionResult.SUCCESS;
 		}
 		return EnumActionResult.PASS;
-	}
-	
-	@Override
-	public int getColorFromItemstack(ItemStack stack, int tintIndex) 
-	{
-		return StackNBTHelper.getTag(stack).getInteger(TAG_COLOUR);
 	}
 	
 	@Override

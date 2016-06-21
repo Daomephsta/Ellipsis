@@ -20,6 +20,7 @@ import com.leviathan143.ellipsis.common.items.EllipsisItems;
 public class ClientProxy extends CommonProxy
 {
 	SoundEventHandler soundEventHandler = new SoundEventHandler();
+	EarmuffColour earmuffColourHandler = new EarmuffColour();
 	
 	@Override
 	public void preInit(FMLPreInitializationEvent event) 
@@ -33,7 +34,7 @@ public class ClientProxy extends CommonProxy
 	public void init(FMLInitializationEvent event) 
 	{
 		super.init(event);
-		Minecraft.getMinecraft().getItemColors().registerItemColorHandler(EllipsisItems.earmuffs, EllipsisItems.earmuffs);
+		Minecraft.getMinecraft().getItemColors().registerItemColorHandler(earmuffColourHandler, EllipsisItems.earmuffs);
 	}
 
 	@Override
