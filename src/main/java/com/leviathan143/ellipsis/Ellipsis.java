@@ -12,7 +12,7 @@ import com.leviathan143.ellipsis.Ellipsis.Constants;
 import com.leviathan143.ellipsis.common.CommonProxy;
 import com.leviathan143.ellipsis.common.blocks.EllipsisBlocks;
 
-@Mod(modid = Constants.MODID, name = Constants.MODNAME, version = Constants.VERSION, acceptedMinecraftVersions = Constants.MCVERSION, canBeDeactivated = false)
+@Mod(modid = Constants.MODID, name = Constants.MODNAME, version = Constants.VERSION, acceptedMinecraftVersions = Constants.MCVERSION)
 public class Ellipsis 
 {
 
@@ -21,7 +21,7 @@ public class Ellipsis
 		public static final String MODNAME = "...(aka Ellipsis)";
 		public static final  String  MODID = "ellipsis";
 		public static final  String  VERSION = "0.1";
-		public static final  String  MCVERSION = "1.8.9";
+		public static final  String  MCVERSION = "1.9.4";
 		public static final String COMMONPROXY_PATH="com.leviathan143.ellipsis.common.CommonProxy";
 		public static final String CLIENTPROXY_PATH="com.leviathan143.ellipsis.client.ClientProxy";
 	}
