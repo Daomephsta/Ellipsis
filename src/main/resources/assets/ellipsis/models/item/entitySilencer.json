@@ -1,23 +1,8 @@
 
 {
-	"parent": "builtin/generated",
+	"parent": "item/handheld",
 	"textures": 
 	{
-		"layer0": "ellipsis:items/earmuffs"
-	},
-    "display": 
-    {
-        "thirdperson":
-        {
-            "rotation": [ 180, 90, 0],
-            "translation": [ 0, 2, -0.5 ],
-            "scale": [ 0.85, 0.85, 0.85 ]
-        },
-        "firstperson": 
-        {
-            "rotation": [ 0, -135, -65],
-            "translation": [ 0, 0, 2 ],
-            "scale": [ 1.7, 1.7, 1.7 ]
-        }
-    }
+		"layer0": "ellipsis:items/entitySilencer"
+	}
 }
