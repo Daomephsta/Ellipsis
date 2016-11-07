@@ -21,3 +21,5 @@
 *.launch
 *.xcf
 /bin/
+/.gradle/
+/build/

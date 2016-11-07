@@ -3,16 +3,13 @@ package com.leviathan143.ellipsis.common.blocks;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraftforge.fml.common.registry.GameData;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-
-import com.google.common.collect.BiMap;
 import com.leviathan143.ellipsis.Ellipsis;
 import com.leviathan143.ellipsis.Ellipsis.Constants;
 import com.leviathan143.ellipsis.common.items.EllipsisItems;
+
+import net.minecraft.block.Block;
+import net.minecraft.item.ItemBlock;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class EllipsisBlocks 
 {

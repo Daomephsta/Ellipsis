@@ -12,7 +12,7 @@ import com.leviathan143.ellipsis.Ellipsis.Constants;
 import com.leviathan143.ellipsis.common.CommonProxy;
 import com.leviathan143.ellipsis.common.blocks.EllipsisBlocks;
 
-@Mod(modid = Constants.MODID, name = Constants.MODNAME, version = Constants.VERSION, acceptedMinecraftVersions = Constants.MCVERSION)
+@Mod(modid = Constants.MODID, name = Constants.MODNAME, version = Constants.VERSION, acceptedMinecraftVersions = Constants.MCVERSION, dependencies = Constants.DEPENDENCIES)
 public class Ellipsis 
 {
 
@@ -22,6 +22,7 @@ public class Ellipsis
 		public static final  String  MODID = "ellipsis";
 		public static final  String  VERSION = "0.1";
 		public static final  String  MCVERSION = "1.9.4";
+		public static final String DEPENDENCIES = "required-after:Forge@[12.18.1.2062,];";
 		public static final String COMMONPROXY_PATH="com.leviathan143.ellipsis.common.CommonProxy";
 		public static final String CLIENTPROXY_PATH="com.leviathan143.ellipsis.client.ClientProxy";
 	}
@@ -36,8 +37,8 @@ public class Ellipsis
 	public static CreativeTabs ellipsisTab =  new CreativeTabs(Constants.MODID) 
 	{	
 		@Override
-		public Item getTabIconItem() {
-			// TODO Auto-generated method stub
+		public Item getTabIconItem() 
+		{
 			return Item.getItemFromBlock(EllipsisBlocks.omnidirectionalMuffler);
 		}
 	};
