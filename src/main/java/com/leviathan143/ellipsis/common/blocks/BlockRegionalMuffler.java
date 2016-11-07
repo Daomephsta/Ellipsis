@@ -2,6 +2,8 @@ package com.leviathan143.ellipsis.common.blocks;
 
 import javax.annotation.Nullable;
 
+import com.leviathan143.ellipsis.common.capability.CapabilityMufflerMap;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -19,8 +21,6 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.leviathan143.ellipsis.common.data.RegionalMufflerMap;
-
 public class BlockRegionalMuffler extends Block
 {	
 	private static final PropertyInteger REGION_RADIUS = PropertyInteger.create("radius", 1, 8); 
@@ -32,16 +32,16 @@ public class BlockRegionalMuffler extends Block
 	}
 	
 	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state,
-			EntityLivingBase placer, ItemStack stack) 
+	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer,
+			ItemStack stack) 
 	{
-		RegionalMufflerMap.get(worldIn).addMuffler(worldIn, pos);
+		CapabilityMufflerMap.get(world).addMuffler(world, pos);
 	}
 	
 	@Override
-	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) 
+	public void breakBlock(World world, BlockPos pos, IBlockState state) 
 	{
-		RegionalMufflerMap.get(worldIn).removeMuffler(worldIn, pos);
+		CapabilityMufflerMap.get(world).removeMuffler(world, pos);
 	}
 	
 	@Override

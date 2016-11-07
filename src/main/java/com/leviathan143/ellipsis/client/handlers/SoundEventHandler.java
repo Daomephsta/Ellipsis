@@ -2,6 +2,10 @@ package com.leviathan143.ellipsis.client.handlers;
 
 import java.util.List;
 
+import com.leviathan143.ellipsis.common.blocks.BlockRegionalMuffler;
+import com.leviathan143.ellipsis.common.blocks.IMuffler;
+import com.leviathan143.ellipsis.common.capability.CapabilityMufflerMap;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
@@ -11,13 +15,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
-import net.minecraftforge.event.entity.PlaySoundAtEntityEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.items.wrapper.PlayerArmorInvWrapper;
-
-import com.leviathan143.ellipsis.common.blocks.BlockRegionalMuffler;
-import com.leviathan143.ellipsis.common.blocks.IMuffler;
-import com.leviathan143.ellipsis.common.data.RegionalMufflerMap;
 
 public class SoundEventHandler 
 {	
@@ -33,12 +32,6 @@ public class SoundEventHandler
 			event.setResultSound(null);
 			return;
 		}
-	}
-
-	@SubscribeEvent
-	public void onEntitySoundPlayed(PlaySoundAtEntityEvent event)
-	{ 
-
 	}
 
 	public boolean doesHeadgearMuffle(World world, EntityPlayer player, ISound iSound)
@@ -76,8 +69,7 @@ public class SoundEventHandler
 
 	public boolean isRegionMuffled(World world, BlockPos soundPos, PlaySoundEvent soundEvent)
 	{
-		RegionalMufflerMap mufflerMap = RegionalMufflerMap.get(world);
-		List<BlockPos> mufflers = mufflerMap.findMufflers(world.getChunkFromBlockCoords(soundPos).getChunkCoordIntPair());
+		List<BlockPos> mufflers = CapabilityMufflerMap.get(world).findMufflers(world.getChunkFromBlockCoords(soundPos).getChunkCoordIntPair());
 		if(mufflers != null)
 		{
 			for(BlockPos mufflerPos : mufflers)
