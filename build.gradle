@@ -22,7 +22,7 @@ plugins {
 */
 version = "1.10.2-0.1"
 group= "com.leviathan143.ellipsis" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "..."
+archivesBaseName = "Ellipis"
 
 minecraft {
     version = "1.10.2-12.18.2.2099"
