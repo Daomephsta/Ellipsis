@@ -17,6 +17,8 @@ import com.leviathan143.ellipsis.common.CommonProxy;
 import com.leviathan143.ellipsis.common.EllipsisConfig;
 import com.leviathan143.ellipsis.common.Shennanigans;
 import com.leviathan143.ellipsis.common.blocks.EllipsisBlocks;
+import com.leviathan143.ellipsis.common.capability.CapabilityMufflerMap;
+import com.leviathan143.ellipsis.common.capability.IMufflerMap;
 import com.leviathan143.ellipsis.common.items.EllipsisItems;
 
 public class ClientProxy extends CommonProxy
@@ -60,5 +62,11 @@ public class ClientProxy extends CommonProxy
 		{
 			ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));
 		}
+	}
+	
+	@Override
+	public IMufflerMap getMufflerMap()
+	{
+	    return CapabilityMufflerMap.get(Minecraft.getMinecraft().theWorld);
 	}
 }

@@ -3,16 +3,14 @@ package com.leviathan143.ellipsis.common.packets;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.leviathan143.ellipsis.common.capability.CapabilityMufflerMap;
+import com.leviathan143.ellipsis.Ellipsis;
 import com.leviathan143.ellipsis.common.capability.IMufflerMap;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraftforge.fml.common.network.simpleimpl.*;
 
 public class PacketSyncChunkMufflers implements IMessage 
 {
@@ -31,12 +29,10 @@ public class PacketSyncChunkMufflers implements IMessage
 
 	public static class PacketSyncChunkMufflersHandler implements IMessageHandler<PacketSyncChunkMufflers, IMessage>
 	{
-		private Minecraft mc = Minecraft.getMinecraft();
-
 		@Override
 		public IMessage onMessage(final PacketSyncChunkMufflers message, final MessageContext ctx) 
 		{
-			mc.addScheduledTask(new Runnable() 
+		    	Minecraft.getMinecraft().addScheduledTask(new Runnable() 
 			{
 				@Override
 				public void run() 
@@ -45,17 +41,17 @@ public class PacketSyncChunkMufflers implements IMessage
 				}
 			});
 			return null;
-		}		
-
+		}
+		
 		private void processMessage(PacketSyncChunkMufflers message, MessageContext ctx)
 		{
-			IMufflerMap mufflerMap = CapabilityMufflerMap.get(mc.theWorld);
+			IMufflerMap mufflerMap = Ellipsis.proxy.getMufflerMap();
 			if(message.isDirty)
 			{
 				mufflerMap.setChunkDirty(message.chunkPos);
 			}
 			else
-				mufflerMap.setMufflersInChunk(message.chunkPos, message.mufflers);;
+				mufflerMap.setMufflersInChunk(message.chunkPos, message.mufflers);
 		}
 	}
 
