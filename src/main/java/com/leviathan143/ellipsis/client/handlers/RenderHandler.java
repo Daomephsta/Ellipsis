@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class RenderHandler 
 {
-	private static final ResourceLocation SILENT_ICON = new ResourceLocation(Constants.MODID, "textures/blocks/omnidirectionalMuffler.png");
+	private static final ResourceLocation SILENT_ICON = new ResourceLocation(Constants.MODID, "textures/misc/silentIndicator.png");
 
 	private Minecraft mc = Minecraft.getMinecraft();
 
@@ -62,10 +62,10 @@ public class RenderHandler
 		GlStateManager.rotate(-renderManager.playerViewY, 0.0F, 1.0F, 0.0F);
 		GlStateManager.rotate((float)(renderManager.options.thirdPersonView == 2 ? -1 : 1) * renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
 		vtxBuf.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
-		vtxBuf.pos(-0.5, 0, 0).tex(0, 0).endVertex();
-		vtxBuf.pos(-0.5, 1, 0).tex(0, 1).endVertex();
-		vtxBuf.pos(0.5, 1, 0).tex(1, 1).endVertex();
-		vtxBuf.pos(0.5, 0, 0).tex(1, 0).endVertex();
+		vtxBuf.pos(-0.5, 0, 0).tex(1, 1).endVertex();
+		vtxBuf.pos(-0.5, 1, 0).tex(1, 0).endVertex();
+		vtxBuf.pos(0.5, 1, 0).tex(0, 0).endVertex();
+		vtxBuf.pos(0.5, 0, 0).tex(0, 1).endVertex();
 		tess.draw();
 		GlStateManager.enableLighting();
 		GlStateManager.popMatrix();
