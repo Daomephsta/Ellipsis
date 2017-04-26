@@ -20,7 +20,7 @@ public class Ellipsis
 	{
 		public static final String MODNAME = "...(aka Ellipsis)";
 		public static final  String  MODID = "ellipsis";
-		public static final  String  VERSION = "0.1.1";
+		public static final  String  VERSION = "0.1.2";
 		public static final  String  MCVERSION = "1.9.4";
 		public static final String DEPENDENCIES = "required-after:Forge@[12.18.1.2062,];";
 		public static final String COMMONPROXY_PATH="com.leviathan143.ellipsis.common.CommonProxy";

@@ -3,7 +3,7 @@
   "modid": "ellipsis",
   "name": "...(aka Ellipsis)",
   "description": "Adds several different types of sound muffling blocks and items",
-  "version": "v0.1.1",
+  "version": "v0.1.2",
   "mcversion": "1.9.4/1.10.2",
   "url": "",
   "updateUrl": "",
