@@ -5,7 +5,7 @@
   		"particle": "ellipsis:blocks/directionalMufflerArrow",
   		"arrow": "ellipsis:blocks/directionalMufflerArrow",
   		"front": "ellipsis:blocks/directionalMufflerFront",
-  		"blank": "ellipsis:blocks/mufflerBlank"
+  		"blank": "ellipsis:blocks/smoothOakPlanks"
   	},
   	"elements": [
         {   "from": [ 0, 0, 0 ],
