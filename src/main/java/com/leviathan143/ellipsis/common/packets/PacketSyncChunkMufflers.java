@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.leviathan143.ellipsis.Ellipsis;
-import com.leviathan143.ellipsis.common.capability.IMufflerMap;
+import com.leviathan143.ellipsis.common.capability.RegionalMufflerMap;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
@@ -45,7 +45,7 @@ public class PacketSyncChunkMufflers implements IMessage
 		
 		private void processMessage(PacketSyncChunkMufflers message, MessageContext ctx)
 		{
-			IMufflerMap mufflerMap = Ellipsis.proxy.getMufflerMap();
+			RegionalMufflerMap mufflerMap = Ellipsis.proxy.getMufflerMap();
 			if(message.isDirty)
 			{
 				mufflerMap.setChunkDirty(message.chunkPos);

@@ -3,11 +3,11 @@
 	"forge_marker": 1,
 	"defaults":
 	{
-		"model": "ellipsis:directionalMuffler"
+		"model": "ellipsis:directional_muffler"
 	},
 	"variants": 
  	{
- 		"inventory": {"model": "ellipsis:directionalMuffler"},
+ 		"inventory": {"model": "ellipsis:directional_muffler"},
 		"facing":
  		{	
  			"north": {},

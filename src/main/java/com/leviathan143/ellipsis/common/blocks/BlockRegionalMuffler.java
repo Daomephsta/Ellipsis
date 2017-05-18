@@ -1,7 +1,5 @@
 package com.leviathan143.ellipsis.common.blocks;
 
-import javax.annotation.Nullable;
-
 import com.leviathan143.ellipsis.common.capability.CapabilityMufflerMap;
 
 import net.minecraft.block.Block;
@@ -15,9 +13,7 @@ import net.minecraft.client.audio.ISound;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -45,13 +41,13 @@ public class BlockRegionalMuffler extends Block
 	}
 	
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) 
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
 	{
-		if(heldItem != null) return false;
+		if(!player.getHeldItem(hand).isEmpty()) return false;
 		int radius = state.getValue(REGION_RADIUS);
-		if(playerIn.isSneaking()) radius = radius > 1 ? radius - 1 : 8;
+		if(player.isSneaking()) radius = radius > 1 ? radius - 1 : 8;
 		else radius = radius < 8 ? radius + 1 : 1;
-		worldIn.setBlockState(pos, this.getDefaultState().withProperty(REGION_RADIUS, radius));
+		world.setBlockState(pos, this.getDefaultState().withProperty(REGION_RADIUS, radius));
 		return true;
 	}
 	

@@ -16,12 +16,8 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -75,13 +71,13 @@ public class ItemEarmuffs extends ItemArmor implements IMuffler
 	}
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) 
+	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
 	{
 		IBlockState blockstate = worldIn.getBlockState(pos);
 		if(blockstate.getBlock() == Blocks.CAULDRON && blockstate.getValue(BlockCauldron.LEVEL) > 0)
 		{
 			((BlockCauldron) blockstate.getBlock()).setWaterLevel(worldIn, pos, blockstate, blockstate.getValue(BlockCauldron.LEVEL) - 1);
-			this.setColor(stack, 16777215); //16777215 = white
+			this.setColor(player.getHeldItem(hand), 16777215); //16777215 = white
 			return EnumActionResult.SUCCESS;
 		}
 		return EnumActionResult.PASS;

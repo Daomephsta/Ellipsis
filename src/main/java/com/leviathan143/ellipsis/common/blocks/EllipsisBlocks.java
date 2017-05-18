@@ -20,9 +20,9 @@ public class EllipsisBlocks
 	
 	public static void init()
 	{
-		registerBlockWithItemBlock(omnidirectionalMuffler, "omnidirectionalMuffler");
-		registerBlockWithItemBlock(directionalMuffler, "directionalMuffler");
-		registerBlockWithItemBlock(regionalMuffler, "regionalMuffler");
+		registerBlockWithItemBlock(omnidirectionalMuffler, "omnidirectional_muffler");
+		registerBlockWithItemBlock(directionalMuffler, "directional_muffler");
+		registerBlockWithItemBlock(regionalMuffler, "regional_muffler");
 	}
 	
 	private static void registerBlock(Block block, String name)
@@ -36,11 +36,7 @@ public class EllipsisBlocks
 	
 	private static void registerBlockWithItemBlock(Block block, String name)
 	{
-		block.setUnlocalizedName(Constants.MODID + "." +  name);
-		block.setRegistryName(name);
-		block.setCreativeTab(Ellipsis.ellipsisTab);
-		GameRegistry.register(block);
-		blockList.add(block);
+		registerBlock(block, name);
 		
 		ItemBlock itemBlock = new ItemBlock(block);
 		itemBlock.setRegistryName(name);

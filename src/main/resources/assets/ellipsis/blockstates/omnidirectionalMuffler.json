@@ -1,7 +1,0 @@
-{
-  	"variants": 
-  	{
-		"inventory": { "model": "ellipsis:omnidirectionalMuffler"}, 
-    	"normal": { "model": "ellipsis:omnidirectionalMuffler"}
-  	}
-}

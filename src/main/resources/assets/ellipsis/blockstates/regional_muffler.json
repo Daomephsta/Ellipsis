@@ -2,17 +2,17 @@
 	"forge_marker": 1,
 	"defaults": 
  	{
-		"model": "ellipsis:regionalMuffler" 
+		"model": "ellipsis:regional_muffler" 
   	},
 	"variants": 
  	{
- 		"inventory": {"model":"ellipsis:regionalMuffler"},
+ 		"inventory": {"model":"ellipsis:regional_muffler"},
     	"radius=1": 
     	[
     		{
     			"textures": 
  				{	
-					"all": "ellipsis:blocks/regionalMuffler/regionalMuffler1"
+					"all": "ellipsis:blocks/regional_muffler/regional_muffler1"
   				}
     		}
     	],
@@ -21,7 +21,7 @@
     		{
     			"textures": 
  				{	
-					"all": "ellipsis:blocks/regionalMuffler/regionalMuffler2"
+					"all": "ellipsis:blocks/regional_muffler/regional_muffler2"
   				}
     		}
     	],
@@ -30,7 +30,7 @@
     		{
     			"textures": 
  				{	
-					"all": "ellipsis:blocks/regionalMuffler/regionalMuffler3"
+					"all": "ellipsis:blocks/regional_muffler/regional_muffler3"
   				}
     		}
     	],
@@ -39,7 +39,7 @@
     		{
     			"textures": 
  				{	
-					"all": "ellipsis:blocks/regionalMuffler/regionalMuffler4"
+					"all": "ellipsis:blocks/regional_muffler/regional_muffler4"
   				}
     		}
     	],
@@ -48,7 +48,7 @@
     		{
     			"textures": 
  				{	
-					"all": "ellipsis:blocks/regionalMuffler/regionalMuffler5"
+					"all": "ellipsis:blocks/regional_muffler/regional_muffler5"
   				}
     		}
     	],
@@ -57,7 +57,7 @@
     		{
     			"textures": 
  				{	
-					"all": "ellipsis:blocks/regionalMuffler/regionalMuffler6"
+					"all": "ellipsis:blocks/regional_muffler/regional_muffler6"
   				}
     		}
     	],
@@ -66,7 +66,7 @@
     		{
     			"textures": 
  				{	
-					"all": "ellipsis:blocks/regionalMuffler/regionalMuffler7"
+					"all": "ellipsis:blocks/regional_muffler/regional_muffler7"
   				}
     		}
     	],
@@ -75,7 +75,7 @@
     		{
     			"textures": 
  				{	
-					"all": "ellipsis:blocks/regionalMuffler/regionalMuffler8"
+					"all": "ellipsis:blocks/regional_muffler/regional_muffler8"
   				}
     		}
     	]

@@ -11,12 +11,11 @@ public class WorldMufflerMapProvider implements ICapabilityProvider
 {
 	public static final ResourceLocation CAP_KEY = new ResourceLocation(Constants.MODID, "_mufflerMap");
 
-	private IMufflerMap mufflerMap;
+	private RegionalMufflerMap mufflerMap;
 
 	public WorldMufflerMapProvider()
 	{
 		mufflerMap = new RegionalMufflerMap();
-		System.out.println(mufflerMap);
 	}
 
 	@Override

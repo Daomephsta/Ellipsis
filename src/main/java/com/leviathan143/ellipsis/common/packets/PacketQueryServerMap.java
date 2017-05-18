@@ -1,16 +1,14 @@
 package com.leviathan143.ellipsis.common.packets;
 
 import com.leviathan143.ellipsis.common.capability.CapabilityMufflerMap;
-import com.leviathan143.ellipsis.common.capability.IMufflerMap;
+import com.leviathan143.ellipsis.common.capability.RegionalMufflerMap;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraftforge.fml.common.network.simpleimpl.*;
 
 public class PacketQueryServerMap implements IMessage 
 {
@@ -43,7 +41,7 @@ public class PacketQueryServerMap implements IMessage
 
 		private void processMessage(PacketQueryServerMap message, MessageContext ctx)
 		{
-			IMufflerMap mufflerMap = CapabilityMufflerMap.get(message.world);
+			RegionalMufflerMap mufflerMap = CapabilityMufflerMap.get(message.world);
 			if(mufflerMap.doesChunkHaveMufflers(message.chunkPos))
 			{
 				PacketHandler.CHANNEL.sendTo(new PacketSyncChunkMufflers(message.chunkPos, mufflerMap.getMufflersInChunk(message.chunkPos)

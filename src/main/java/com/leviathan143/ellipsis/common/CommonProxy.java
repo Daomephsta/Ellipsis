@@ -38,7 +38,7 @@ public class CommonProxy
 		
 	}
 	
-	public IMufflerMap getMufflerMap()
+	public RegionalMufflerMap getMufflerMap()
 	{
 	    return CapabilityMufflerMap.get(FMLCommonHandler.instance().getMinecraftServerInstance().getEntityWorld());
 	}

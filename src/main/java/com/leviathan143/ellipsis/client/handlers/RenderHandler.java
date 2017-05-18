@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class RenderHandler 
 {
-	private static final ResourceLocation SILENT_ICON = new ResourceLocation(Constants.MODID, "textures/misc/silentIndicator.png");
+	private static final ResourceLocation SILENT_ICON = new ResourceLocation(Constants.MODID, "textures/misc/silent_indicator.png");
 
 	private Minecraft mc = Minecraft.getMinecraft();
 
@@ -30,8 +30,7 @@ public class RenderHandler
 		//Only render
 		if(event.getEntity().isSilent())
 		{
-			if((mc.thePlayer.getHeldItem(EnumHand.MAIN_HAND) != null && mc.thePlayer.getHeldItem(EnumHand.MAIN_HAND).getItem() == EllipsisItems.entitySilencer) 
-					|| (mc.thePlayer.getHeldItem(EnumHand.OFF_HAND) != null && mc.thePlayer.getHeldItem(EnumHand.OFF_HAND).getItem() == EllipsisItems.entitySilencer)) 
+			if(mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() == EllipsisItems.entitySilencer || mc.player.getHeldItem(EnumHand.OFF_HAND).getItem() == EllipsisItems.entitySilencer) 
 				renderSilentIndicator(event.getEntity(), event.getRenderer().getRenderManager(), mc.getRenderPartialTicks());
 		}
 	}
@@ -39,9 +38,9 @@ public class RenderHandler
 	public void renderSilentIndicator(EntityLivingBase entity, RenderManager renderManager, float partialTicks)
 	{
 		//Interpolate the entity and player coordinates
-		double playerInterpX = mc.thePlayer.lastTickPosX + (mc.thePlayer.posX - mc.thePlayer.lastTickPosX) * partialTicks;
-		double playerInterpY = mc.thePlayer.lastTickPosY + (mc.thePlayer.posY - mc.thePlayer.lastTickPosY) * partialTicks;
-		double playerInterpZ = mc.thePlayer.lastTickPosZ + (mc.thePlayer.posZ - mc.thePlayer.lastTickPosZ) * partialTicks;
+		double playerInterpX = mc.player.lastTickPosX + (mc.player.posX - mc.player.lastTickPosX) * partialTicks;
+		double playerInterpY = mc.player.lastTickPosY + (mc.player.posY - mc.player.lastTickPosY) * partialTicks;
+		double playerInterpZ = mc.player.lastTickPosZ + (mc.player.posZ - mc.player.lastTickPosZ) * partialTicks;
 
 		double entityInterpX = entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * partialTicks;
 		double entityInterpY = entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * partialTicks + entity.height + 0.25D;

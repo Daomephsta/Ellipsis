@@ -12,7 +12,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
 
-public class RegionalMufflerMap implements IMufflerMap
+public class RegionalMufflerMap
 {		
 	public static final String MUFFLER_LIST_TAG = "Mufflers";
 	private static final String MUFFLER_POS_TAG = "Pos";
@@ -20,8 +20,7 @@ public class RegionalMufflerMap implements IMufflerMap
 	private HashMap<ChunkPos, List<BlockPos>> regionalMufflerMap = new HashMap<ChunkPos, List<BlockPos>>();
 	//Chunks been unloaded and need to be removed from the map TODO: Get this working with chunks that have lost all their mufflers
 	private List<ChunkPos> dirtyChunks = new ArrayList<ChunkPos>();
-	
-	@Override
+
 	public List<BlockPos> findMufflers(ChunkPos centralChunkCoords)
 	{
 		ChunkPos chunkCoords = centralChunkCoords;
@@ -36,23 +35,20 @@ public class RegionalMufflerMap implements IMufflerMap
 		}
 		return mufflers;
 	}
-	
-	@Override
+
 	public void setMufflersInChunk(ChunkPos chunkPos, List<BlockPos> mufflers) 
 	{
 		regionalMufflerMap.put(chunkPos, mufflers);
 	}
-	
-	@Override
+
 	public List<BlockPos> getMufflersInChunk(ChunkPos chunkPos) 
 	{
 		return regionalMufflerMap.containsKey(chunkPos) ? regionalMufflerMap.get(chunkPos) : Collections.<BlockPos>emptyList();
 	}
 
-	@Override
 	public void addMuffler(World world, BlockPos mufflerPos)
 	{
-		ChunkPos chunkCoords = world.getChunkFromBlockCoords(mufflerPos).getChunkCoordIntPair();
+		ChunkPos chunkCoords = world.getChunkFromBlockCoords(mufflerPos).getPos();
 		List<BlockPos> mufflers;
 		if(regionalMufflerMap.containsKey(chunkCoords)) mufflers = regionalMufflerMap.get(chunkCoords);
 		else
@@ -67,10 +63,9 @@ public class RegionalMufflerMap implements IMufflerMap
 		}
 	}
 
-	@Override
 	public void removeMuffler(World world, BlockPos mufflerPos)
 	{
-		ChunkPos chunkCoords = world.getChunkFromBlockCoords(mufflerPos).getChunkCoordIntPair();
+		ChunkPos chunkCoords = world.getChunkFromBlockCoords(mufflerPos).getPos();
 		List<BlockPos> mufflers;
 		if(regionalMufflerMap.containsKey(chunkCoords))
 		{
@@ -90,7 +85,6 @@ public class RegionalMufflerMap implements IMufflerMap
 		}
 	}
 	
-	@Override
 	public BlockPos[] getAllMufflers() 
 	{
 		List<BlockPos> allMufflers = new ArrayList<BlockPos>();
@@ -110,25 +104,21 @@ public class RegionalMufflerMap implements IMufflerMap
 		return false;
 	}
 	
-	@Override
 	public boolean doesChunkHaveMufflers(ChunkPos chunkPos) 
 	{
 		return regionalMufflerMap.containsKey(chunkPos);
 	}
 	
-	@Override
 	public boolean isChunkDirty(ChunkPos chunkPos) 
 	{
 		return dirtyChunks.contains(chunkPos);
 	}
 	
-	@Override
 	public void setChunkClean(ChunkPos chunkPos) 
 	{
 		dirtyChunks.remove(chunkPos);
 	}
 	
-	@Override
 	public void setChunkDirty(ChunkPos chunkPos) 
 	{
 		dirtyChunks.add(chunkPos);

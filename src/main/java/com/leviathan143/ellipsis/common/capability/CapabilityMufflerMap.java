@@ -12,28 +12,28 @@ import net.minecraftforge.common.capabilities.CapabilityManager;
 public class CapabilityMufflerMap
 {
 	
-	@CapabilityInject(IMufflerMap.class)
-	public static Capability<IMufflerMap> CAP_MUFFLER_MAP = null;
+	@CapabilityInject(RegionalMufflerMap.class)
+	public static Capability<RegionalMufflerMap> CAP_MUFFLER_MAP = null;
 	
 	public static void register()
 	{
-		CapabilityManager.INSTANCE.register(IMufflerMap.class, new Capability.IStorage<IMufflerMap>() 
+		CapabilityManager.INSTANCE.register(RegionalMufflerMap.class, new Capability.IStorage<RegionalMufflerMap>() 
 		{
 			@Override
-			public NBTBase writeNBT(Capability<IMufflerMap> capability, IMufflerMap instance, EnumFacing side) {return null;}
+			public NBTBase writeNBT(Capability<RegionalMufflerMap> capability, RegionalMufflerMap instance, EnumFacing side) {return null;}
 
 			@Override
-			public void readNBT(Capability<IMufflerMap> capability, IMufflerMap instance, EnumFacing side, NBTBase nbt) {}
+			public void readNBT(Capability<RegionalMufflerMap> capability, RegionalMufflerMap instance, EnumFacing side, NBTBase nbt) {}
 		}, 
-		new Callable<IMufflerMap>() 
+		new Callable<RegionalMufflerMap>() 
 		{
 			@Override
-			public IMufflerMap call() throws Exception {return null;}
+			public RegionalMufflerMap call() throws Exception {return null;}
 		});
 	}
 	
-	public static IMufflerMap get(World world)
+	public static RegionalMufflerMap get(World world)
 	{
-		return world.<IMufflerMap>getCapability(CapabilityMufflerMap.CAP_MUFFLER_MAP, null);
+		return world.<RegionalMufflerMap>getCapability(CapabilityMufflerMap.CAP_MUFFLER_MAP, null);
 	}
 }

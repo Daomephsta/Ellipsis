@@ -3,6 +3,6 @@
 	"parent": "item/handheld",
 	"textures": 
 	{
-		"layer0": "ellipsis:items/entitySilencer"
+		"layer0": "ellipsis:items/entity_silencer"
 	}
 }

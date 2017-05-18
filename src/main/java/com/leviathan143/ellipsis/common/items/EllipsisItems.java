@@ -18,7 +18,7 @@ public class EllipsisItems
 	public static void init()
 	{
 		registerItem(earmuffs, "earmuffs");
-		registerItem(entitySilencer, "entitySilencer");
+		registerItem(entitySilencer, "entity_silencer");
 	}
 	
 	private static void registerItem(Item item, String name)

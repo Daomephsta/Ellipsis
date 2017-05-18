@@ -23,8 +23,8 @@ public class SoundEventHandler
 	@SubscribeEvent
 	public void onSoundPlayed(PlaySoundEvent event)
 	{
-		World world = Minecraft.getMinecraft().theWorld;
-		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+		World world = Minecraft.getMinecraft().world;
+		EntityPlayer player = Minecraft.getMinecraft().player;
 
 		if(world == null || player == null) return;
 		if(doesHeadgearMuffle(world, player, event.getSound()) || doBlocksMuffle(world, event))
@@ -38,7 +38,7 @@ public class SoundEventHandler
 	{
 		ItemStack headArmour = new PlayerArmorInvWrapper(player.inventory).getStackInSlot(3);
 
-		if(headArmour != null && headArmour.getItem() instanceof IMuffler)
+		if(headArmour.getItem() instanceof IMuffler)
 		{
 			if(((IMuffler) headArmour.getItem()).shouldMuffleSound(world, player.getPosition(), iSound, iSound.getCategory()))
 			{
@@ -69,7 +69,7 @@ public class SoundEventHandler
 
 	public boolean isRegionMuffled(World world, BlockPos soundPos, PlaySoundEvent soundEvent)
 	{
-		List<BlockPos> mufflers = CapabilityMufflerMap.get(world).findMufflers(world.getChunkFromBlockCoords(soundPos).getChunkCoordIntPair());
+		List<BlockPos> mufflers = CapabilityMufflerMap.get(world).findMufflers(world.getChunkFromBlockCoords(soundPos).getPos());
 		if(mufflers != null)
 		{
 			for(BlockPos mufflerPos : mufflers)

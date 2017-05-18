@@ -2,10 +2,10 @@
 	"parent":"block/block",
   	"textures": 
   	{
-  		"particle": "ellipsis:blocks/directionalMufflerArrow",
-  		"arrow": "ellipsis:blocks/directionalMufflerArrow",
-  		"front": "ellipsis:blocks/directionalMufflerFront",
-  		"blank": "ellipsis:blocks/smoothOakPlanks"
+  		"particle": "ellipsis:blocks/directional_muffler_arrow",
+  		"arrow": "ellipsis:blocks/directional_muffler_arrow",
+  		"front": "ellipsis:blocks/directional_muffler_front",
+  		"blank": "ellipsis:blocks/smooth_oak_planks"
   	},
   	"elements": [
         {   "from": [ 0, 0, 0 ],

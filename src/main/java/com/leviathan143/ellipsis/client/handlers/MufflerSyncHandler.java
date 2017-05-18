@@ -12,13 +12,13 @@ public class MufflerSyncHandler
 	@SubscribeEvent
 	public static void onChunkLoad(ChunkEvent.Load event)
 	{
-		PacketHandler.CHANNEL.sendToServer(new PacketQueryServerMap(event.getWorld(), event.getChunk().getChunkCoordIntPair()));
+		PacketHandler.CHANNEL.sendToServer(new PacketQueryServerMap(event.getWorld(), event.getChunk().getPos()));
 	}
 	
 	//Remove unloaded chunks from the clientside muffler map
 	@SubscribeEvent
 	public static void onChunkUnload(ChunkEvent.Unload event)
 	{
-		CapabilityMufflerMap.get(event.getWorld()).setChunkDirty(event.getChunk().getChunkCoordIntPair());
+		CapabilityMufflerMap.get(event.getWorld()).setChunkDirty(event.getChunk().getPos());
 	}
 }
