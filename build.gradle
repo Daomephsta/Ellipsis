@@ -21,10 +21,7 @@ plugins {
 }
 */
 
-targetCompatibility = "1.7"
-sourceCompatibility = "1.8"
-
-version = project.modVersion + "-" + project.mcVersion
+version = project.mcVersion + "-" + project.modVersion
 group= "com.leviathan143.ellipsis" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "Ellipis"
 
