@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "radius=1": {
+      "model": "ellipsis:block/regional_muffler/radius_1"
+    },
+    "radius=2": {
+      "model": "ellipsis:block/regional_muffler/radius_2"
+    },
+    "radius=3": {
+      "model": "ellipsis:block/regional_muffler/radius_3"
+    },
+    "radius=4": {
+      "model": "ellipsis:block/regional_muffler/radius_4"
+    },
+    "radius=5": {
+      "model": "ellipsis:block/regional_muffler/radius_5"
+    },
+    "radius=6": {
+      "model": "ellipsis:block/regional_muffler/radius_6"
+    },
+    "radius=7": {
+      "model": "ellipsis:block/regional_muffler/radius_7"
+    },
+    "radius=8": {
+      "model": "ellipsis:block/regional_muffler/radius_8"
+    }
+  }
+}

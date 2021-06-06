@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "ellipsis:block/directional_muffler",
+      "x": 180
+    },
+    "facing=up": {
+      "model": "ellipsis:block/directional_muffler"
+    },
+    "facing=north": {
+      "model": "ellipsis:block/directional_muffler",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "ellipsis:block/directional_muffler",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west": {
+      "model": "ellipsis:block/directional_muffler",
+      "x": 90,
+      "y": 270
+    },
+    "facing=east": {
+      "model": "ellipsis:block/directional_muffler",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

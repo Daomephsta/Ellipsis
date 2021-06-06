@@ -1,0 +1,18 @@
+modLoader="javafml"
+loaderVersion="[36,)"
+license="MIT"
+issueTrackerURL="https://github.com/Daomephsta/Ellipsis/issues"
+[[mods]]
+modId="ellipsis"
+version="${file.jarVersion}"
+displayName="... (Ellipsis)"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/ellipsis"
+authors="Daomephsta"
+description="Adds several different types of sound muffling blocks and items"
+logoFile="logoFile.png"
+[[dependencies.ellipsis]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.5,1.17)"
+    ordering="NONE"
+    side="BOTH"

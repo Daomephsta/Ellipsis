@@ -1,25 +1,26 @@
-/.gradle/*
-/build/*
-/eclipse/*
-/out/*
-/asm/*
-/bin/*
-/libs/*
-/run/*
-/.settings/*
-*.psd
-*.iml
+# eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
+
+# idea
+out
 *.ipr
 *.iws
-*.psd
-*.idea/*
-*.db
-*.pdn
-*.launch
-*.classpath
-*.project
-*.launch
-*.xcf
-/bin/
-/.gradle/
-/build/
+*.iml
+.idea
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
+run
+src/generated/resources/.cache/cache
+
+# Files from Forge MDK
+forge*changelog.txt

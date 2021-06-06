@@ -1,0 +1,13 @@
+{
+    "itemGroup.ellipsis": "...",
+    "block.ellipsis.directional_muffler": "Directional Sound Canceller",
+    "block.ellipsis.omnidirectional_muffler": "Omnidirectional Sound Canceller",
+    "block.ellipsis.regional_muffler": "Regional Sound Canceller",
+    "item.ellipsis.earmuffs": "Earmuffs",
+    "item.ellipsis.entity_silencer": "Wand of Shush",
+    "block.ellipsis.directional_muffler.jeiDescription": "Cancels sounds made by the block touching the face with the bulls-eye.",
+    "block.ellipsis.omnidirectional_muffler.jeiDescription": "Cancels sounds made by blocks touching any of its faces.",
+    "block.ellipsis.regional_muffler.jeiDescription": "Cancels sounds within a sphere with a radius of 1 - 8 blocks. Right-click with an empty hand to increment the radius, shift right-click with an empty hand to decrement the radius.",
+    "item.ellipsis.earmuffs.jeiDescription": "Earmuffs can be equipped in the helmet slot to cancel all in-game sounds. They can be also dyed in the same way as leather armour.",
+    "item.ellipsis.entity_silencer.jeiDescription": "Toggles entities between silent and non-silent on right-click. Silenced entities will have an indicator above them."
+}

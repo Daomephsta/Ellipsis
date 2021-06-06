@@ -1,7 +1,0 @@
-{
- 	"parent": "block/cube_all",
-  	"textures": 
-  	{
-		"all": "ellipsis:blocks/regional_muffler/regional_muffler1"
-  	}
-}
